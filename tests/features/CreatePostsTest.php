@@ -25,7 +25,7 @@ class CreatePostsTest extends FeatureTestCase
 
     }
 
-    public function test_a_guest_user_tries_to_create_a_post()
+    /*public function test_a_guest_user_tries_to_create_a_post()
     {
 
         // Having
@@ -51,7 +51,7 @@ class CreatePostsTest extends FeatureTestCase
         // Test a user is redirected to the posts details after creating it.
         $this->see($title);
 
-    }
+    }*/
 
     public function test_creating_a_post_requires_authentification()
     {
