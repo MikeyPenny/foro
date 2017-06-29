@@ -25,14 +25,14 @@ class CreatePostsTest extends FeatureTestCase
 
     }
 
-    /*public function test_a_guest_user_tries_to_create_a_post()
+    public function test_a_guest_user_tries_to_create_a_post()
     {
 
         // Having
         $title = 'Esta es una pregunta';
         $content = 'Este es el contenido';
 
-
+        $this->actingAs($user = $this->defaultUser());
         // When
         $this->visit(route('posts.create'))
             ->type($title, 'title')
@@ -45,13 +45,14 @@ class CreatePostsTest extends FeatureTestCase
             'content' => $content,
             'pending' => true,
             'user_id' => $user->id,
+            'slug' => 'esta-es-una-pregunta',
         ]);
 
 
         // Test a user is redirected to the posts details after creating it.
         $this->see($title);
 
-    }*/
+    }
 
     public function test_creating_a_post_requires_authentification()
     {

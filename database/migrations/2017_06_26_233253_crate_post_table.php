@@ -20,6 +20,7 @@ class CratePostTable extends Migration
             $table->string('title');
             $table->mediumText('content');
             $table->boolean('pending')->default(true);
+            $table->string('slug');
             $table->timestamps();
         });
     }
