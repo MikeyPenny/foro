@@ -1,9 +1,10 @@
 <?php
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [
+    'uses' => 'PostController@index',
+    'as' => 'post.index'
+]);
 
 Auth::routes();
 
@@ -13,6 +14,8 @@ Route::get('posts/{post}-{slug}', [
    'as' => 'posts.show',
     'uses' => 'PostController@show'
 ])->where('post', '\d+');
+
+
 
 
 
