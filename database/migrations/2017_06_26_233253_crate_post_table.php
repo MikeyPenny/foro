@@ -21,6 +21,7 @@ class CratePostTable extends Migration
             $table->mediumText('content');
             $table->boolean('pending')->default(true);
             $table->string('slug');
+            $table->unsignedInteger('answer_id')->nullable();
             $table->timestamps();
         });
     }
