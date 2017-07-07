@@ -3,7 +3,7 @@
 
 use App\User;
 
-class SuscribePostsTest extends FeatureTestCase
+class SubscribePostsTest extends FeatureTestCase
 {
 
     function test_a_user_can_subscribe_to_a_post()
@@ -30,4 +30,27 @@ class SuscribePostsTest extends FeatureTestCase
             ->dontSee('Suscribirse al post'); // Ya no ver el botón de suscribirse puesto que ya se efectuó
 
     }
+
+    function test_a_user_can_unsubscribe_from_a_post()
+    {
+        $post = $this->createPost();
+
+        $user = factory(User::class)->create();
+
+        $user->subscribedTo($post);
+        $this->actingAs($user);
+
+        $this->visit($post->url)
+            ->dontSee('Suscribirse al post')
+            ->press('Desuscribirse del post');
+
+        $this->dontSeeInDatabase('subscriptions',[
+           'user_id' => $user->id,
+            'post_id' => $post->id,
+        ]);
+
+        $this->seePageIs($post->url);
+
+    }
+
 }

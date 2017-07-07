@@ -1,6 +1,8 @@
 <?php
 
 
+use App\Post;
+
 class CreatePostsTest extends FeatureTestCase
 {
     public function test_a_user_create_a_post()
@@ -48,9 +50,15 @@ class CreatePostsTest extends FeatureTestCase
             'slug' => 'esta-es-una-pregunta',
         ]);
 
+        $post = Post::first();
+
+        $this->seeInDatabase('subscriptions', [
+            'user_id' => $user->id,
+            'post_id' => $post->id,
+        ]);
 
         // Test a user is redirected to the posts details after creating it.
-        $this->see($title);
+        $this->seePageIs($post->url);
 
     }
 

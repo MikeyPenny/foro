@@ -12,6 +12,13 @@
             <button type="submit">Suscribirse al post</button>
         {!! Form::close() !!}
     @endif
+
+    @if(auth()->check() && auth()->user()->isSubscribedTo($post))
+        {!! Form::open(['route' => ['posts.unsubscribe', $post], 'method' => 'DELETE']) !!}
+            <button type="submit">Desuscribirse del post</button>
+        {!! Form::close() !!}
+    @endif
+
     <h4>Comentarios</h4>
 
     {!! Form::open(['route' => ['comments.store', $post], 'method' => 'POST']) !!}
