@@ -6,7 +6,7 @@ Route::get('/', [
     'as' => 'post.index'
 ]);
 
-Auth::routes();
+
 
 Route::get('/home', 'HomeController@index');
 

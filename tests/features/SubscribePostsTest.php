@@ -31,7 +31,7 @@ class SubscribePostsTest extends FeatureTestCase
 
     }
 
-    function test_a_user_can_unsubscribe_from_a_post()
+    function test_a_user_can_un_subscribe_from_a_post()
     {
         $post = $this->createPost();
 
